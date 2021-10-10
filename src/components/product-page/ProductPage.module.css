@@ -1,0 +1,55 @@
+.app {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(5, auto);
+  justify-content: space-evenly;
+  margin: 20px;
+}
+
+.errMsg {
+  color: red;
+  font-size: 14px;
+  margin: 0px 2px 4px 4px;
+}
+
+.sidenavIsOpen {
+  margin-left: 320px;
+}
+.paginationBttns {
+  width: 80%;
+  height: 40px;
+  list-style: none;
+  display: flex;
+  margin-left: 10%;
+  justify-content: center;
+}
+
+.paginationBttns a {
+  padding: 10px;
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid black;
+  color: black;
+  cursor: pointer;
+}
+
+.paginationBttns a:hover {
+  color: white;
+  background-color: coral;
+}
+
+.delete {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.paginationActive a {
+  color: white;
+  background-color: #ea526f ;
+}
+
+.paginationDisabled a {
+  display: none;
+  color: grey;
+  background-color: grey;
+}
