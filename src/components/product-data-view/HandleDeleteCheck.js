@@ -6,7 +6,7 @@ import ButtonGroup from '@material-ui/core/ButtonGroup';
 import DeleteDialog from './DeleteDialog';
 import fetchPurchaseInfo from './DeleteDialogService';
 import deleteProductById from './DeleteProductService';
-import styles from '../product-page/ProductPage.module.css';
+import styles from './PatientsTable.css';
 
 /**
  * Checks the row that's being rendered to see if the product in that row has any reviews. If
@@ -22,9 +22,9 @@ import styles from '../product-page/ProductPage.module.css';
 
 const HandleDeleteCheck = (cellInfo) => {
   const [open, setOpen] = useState(false);
-  const [purchases, setPurchases] = useState([]);
+  const [patients, setPatients] = useState([]);
   const [apiError, setApiError] = useState([]);
-  const product = cellInfo.row;
+  const patient = cellInfo.row;
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -33,11 +33,11 @@ const HandleDeleteCheck = (cellInfo) => {
     setOpen(false);
   };
   useEffect(() => {
-    fetchPurchaseInfo(setPurchases, setApiError, cellInfo.row.id);
+    fetchPurchaseInfo(setPatients, setApiError, cellInfo.row.id);
   }, [cellInfo.row.id]);
 
   if (cellInfo !== undefined) {
-    if (cellInfo.row.reviews.length === 0) {
+    if (cellInfo.row.encounters.length === 0) {
       return (
         <div className={styles.delete}>
           {apiError}
@@ -46,9 +46,9 @@ const HandleDeleteCheck = (cellInfo) => {
               className={styles.deleteButton}
               variant="contained"
               onClick={() => {
-                if (purchases.length > 0) {
+                if (patients.length > 0) {
                   handleClickOpen();
-                } else if (purchases.length === 0) {
+                } else if (patients.length === 0) {
                   deleteProductById(setApiError, cellInfo.row.id);
                 }
               }}
@@ -56,7 +56,7 @@ const HandleDeleteCheck = (cellInfo) => {
               <DeleteIcon />
             </Button>
           </ButtonGroup>
-          <DeleteDialog open={open} handleClose={handleClose} product={product} />
+          <DeleteDialog open={open} handleClose={handleClose} patient={patient} />
         </div>
       );
     }

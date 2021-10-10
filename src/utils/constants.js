@@ -1,10 +1,7 @@
 module.exports = Object.freeze({
-  ACTIVE_PRODUCTS_PAGINATED: '/products/page/',
-  ACTIVE_PRODUCTS_ENDPOINT: '/products?active=true',
-  ALL_PRODUCTS_ENDPOINT: '/products',
+  ALL_PATIENTS_ENDPOINT: '/patients',
   API_ERROR: 'Oops, something went wrong',
-  BASE_URL_API: 'https://fo4s-sports-apparel-api.herokuapp.com',
-  // BASE_URL_API: 'http://localhost:8085',
+  BASE_URL_API: 'http://localhost:8085',
   CALCULATE_TOTAL_CHARGES: '/purchases/calculateTotalCharges',
   CREATE_PRODUCT_ENDPOINT: '/maintenance/create',
   DELETE_PRODUCT_BY_ID_ENDPOINT: '/products/delete/',

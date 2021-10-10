@@ -5,13 +5,13 @@ import { DataGrid } from '@material-ui/data-grid';
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
-import styles from '../product-page/ProductPage.module.css';
 import Constants from '../../utils/constants';
-import fetchProducts from './DataViewService';
 import PromoDialog from './PromoDialog';
 import handleDeleteCheck from './HandleDeleteCheck';
 import updateProducts from './ProductEditInfoService';
 import notify from '../Toast/Toast';
+import fetchPatients from './DataViewService';
+import styles from './PatientsTable.css';
 
 /**
  * @name DataTable
@@ -68,115 +68,94 @@ const columns = [
   },
   {
     editable: true,
-    field: 'name',
-    headerName: 'Product',
+    field: 'firstName',
+    headerName: 'First Name',
     headerClassName: 'table-header',
-    width: 300
+    width: 185
   },
   {
     editable: true,
-    field: 'description',
-    headerName: 'Description',
+    field: 'lastName',
+    headerName: 'Last Name',
     headerClassName: 'table-header',
-    width: 650
+    width: 185
   },
   {
     editable: true,
-    field: 'category',
-    headerName: 'Category',
+    field: 'ssn',
+    headerName: 'SSN',
     headerClassName: 'table-header',
     width: 200
   },
   {
     editable: true,
-    field: 'demographic',
-    headerName: 'Demographic',
+    field: 'email',
+    headerName: 'E-Mail',
+    headerClassName: 'table-header',
+    width: 350
+  },
+  {
+    editable: true,
+    field: 'street',
+    headerName: 'Street',
+    headerClassName: 'table-header',
+    width: 350
+  },
+  {
+    editable: true,
+    field: 'city',
+    headerName: 'City',
     headerClassName: 'table-header',
     width: 250
   },
   {
     editable: true,
-    field: 'type',
-    headerName: 'Type',
+    field: 'state',
+    headerName: 'State',
     headerClassName: 'table-header',
     width: 150
   },
   {
     editable: true,
-    field: 'releaseDate',
-    headerName: 'ReleaseDate',
+    field: 'postal',
+    headerName: 'Postal',
     headerClassName: 'table-header',
-    width: 250
+    width: 150
   },
   {
     editable: true,
-    field: 'primaryColorCode',
-    headerName: 'PrimaryColorCode',
+    field: 'age',
+    headerName: 'Age',
     headerClassName: 'table-header',
-    width: 290
+    width: 150
   },
   {
     editable: true,
-    field: 'secondaryColorCode',
-    headerName: 'SecondaryColorCode',
-    headerClassName: 'table-header',
-    width: 290
-  },
-  {
-    editable: true,
-    field: 'styleNumber',
-    headerName: 'StyleNumber',
-    headerClassName: 'table-header',
-    width: 250
-  },
-  {
-    editable: true,
-    field: 'globalProductCode',
-    headerName: 'GlobalProductCode',
+    field: 'height',
+    type: 'number',
+    headerName: 'Height (inches)',
     headerClassName: 'table-header',
     width: 270
   },
   {
     editable: true,
-    field: 'brand',
-    headerName: 'Brand',
+    field: 'weight',
+    type: 'number',
+    headerName: 'Weight (pounds)',
+    headerClassName: 'table-header',
+    width: 250
+  },
+  {
+    editable: true,
+    field: 'insurance',
+    headerName: 'Insurance',
     headerClassName: 'table-header',
     width: 200
   },
   {
     editable: true,
-    field: 'material',
-    headerName: 'Material',
-    headerClassName: 'table-header',
-    width: 200
-  },
-  {
-    editable: true,
-    field: 'price',
-    type: 'number',
-    headerName: 'Price',
-    headerClassName: 'table-header',
-    width: 150
-  },
-  {
-    editable: true,
-    field: 'quantity',
-    type: 'number',
-    headerName: 'Quantity',
-    headerClassName: 'table-header',
-    width: 150
-  },
-  {
-    editable: true,
-    field: 'imageSrc',
-    headerName: 'ImageSrc',
-    headerClassName: 'table-header',
-    width: 700
-  },
-  {
-    editable: true,
-    field: 'active',
-    headerName: 'Status',
+    field: 'gender',
+    headerName: 'Gender',
     headerClassName: 'table-header',
     width: 150
   }
@@ -184,10 +163,10 @@ const columns = [
 
 const DataTable = () => {
   const classes = useStyles();
-  const [products, setProducts] = useState([]);
+  const [patients, setPatients] = useState([]);
   const [apiError, setApiError] = useState(false);
   const [open, setOpen] = useState(false);
-  const updatedProducts = [];
+  const updatedPatients = [];
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -195,7 +174,7 @@ const DataTable = () => {
     setOpen(false);
   };
   useEffect(() => {
-    fetchProducts(setProducts, setApiError);
+    fetchPatients(setPatients, setApiError);
   }, []);
 
   /**
@@ -212,68 +191,60 @@ const DataTable = () => {
     }
     switch (selections.field) {
       case 'name':
-        products[selections.id - 1].name = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+        patients[selections.id - 1].name = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'description':
-        products[selections.id - 1].description = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'firstName':
+        patients[selections.id - 1].description = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'category':
-        products[selections.id - 1].category = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'lastName':
+        patients[selections.id - 1].category = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'demographic':
-        products[selections.id - 1].demographic = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'ssn':
+        patients[selections.id - 1].demographic = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'type':
-        products[selections.id - 1].type = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'email':
+        patients[selections.id - 1].type = selections.value;
+        updatedPatients.push(updatedPatients[selections.id - 1]);
         break;
-      case 'releaseDate':
-        products[selections.id - 1].releaseDate = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'street':
+        patients[selections.id - 1].releaseDate = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'primaryColorCode':
-        products[selections.id - 1].primaryColorCode = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'city':
+        patients[selections.id - 1].primaryColorCode = selections.value;
+        updatedPatients.push(updatedPatients[selections.id - 1]);
         break;
-      case 'secondaryColorCode':
-        products[selections.id - 1].secondaryColorCode = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'state':
+        patients[selections.id - 1].secondaryColorCode = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'styleNumber':
-        products[selections.id - 1].styleNumber = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'postal':
+        patients[selections.id - 1].styleNumber = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'globalProductCode':
-        products[selections.id - 1].GlobalProductCode = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'age':
+        patients[selections.id - 1].GlobalProductCode = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'brand':
-        products[selections.id - 1].brand = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'height':
+        patients[selections.id - 1].brand = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'material':
-        products[selections.id - 1].material = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'weight':
+        patients[selections.id - 1].material = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'price':
-        products[selections.id - 1].price = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'insurance':
+        patients[selections.id - 1].price = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
-      case 'quantity':
-        products[selections.id - 1].quantity = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
-        break;
-      case 'imageSrc':
-        products[selections.id - 1].imageSrc = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
-        break;
-      case 'active':
-        products[selections.id - 1].active = selections.value;
-        updatedProducts.push(products[selections.id - 1]);
+      case 'gender':
+        patients[selections.id - 1].quantity = selections.value;
+        updatedPatients.push(patients[selections.id - 1]);
         break;
       default:
     }
@@ -283,7 +254,7 @@ const DataTable = () => {
    * calls the update products
    */
   const handleSubmit = () => {
-    updateProducts(updatedProducts, setApiError);
+    updateProducts(updatedPatients, setApiError);
     notify('success', 'Update was Successful');
   };
   return (
@@ -303,7 +274,7 @@ const DataTable = () => {
         className={classes.root}
       >
         <DataGrid
-          rows={products}
+          rows={patients}
           columns={columns}
           editMode="row"
           onCellEditCommit={onCellEditCommit}

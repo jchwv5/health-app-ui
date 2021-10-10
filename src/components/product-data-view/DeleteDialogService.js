@@ -11,18 +11,18 @@ import Constants from '../../utils/constants';
  * @param {*} id The product ID to check the database for purchases
  * @returns sets state for purchases if 200 response, else sets state for apiError
  */
-async function fetchPurchaseInfo(setPurchases, setApiError, id) {
-  await HttpHelper(Constants.PURCHASE_BY_PRODUCT_ID_ENDPOINT + id, 'GET')
+async function fetchEncounterInfo(setEncounters, setApiError, patientId) {
+  await HttpHelper(`patients/${patientId}/encounters`, 'GET')
     .then((response) => {
       if (response.ok) {
         return response.json();
       }
       throw new Error(Constants.API_ERROR);
     })
-    .then(setPurchases)
+    .then(setEncounters)
     .catch(() => {
       setApiError(true);
     });
 }
 
-export default fetchPurchaseInfo;
+export default fetchEncounterInfo;
