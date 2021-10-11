@@ -13,7 +13,6 @@ h3 {
 }
 
 table {
-    border: 1px solid black;
     border-collapse: collapse;
     width: 60%;
     margin-left: 10%;
@@ -36,8 +35,33 @@ tr:hover {
 
 td{ 
     padding-left: 15px;
+    border: 1px solid black;
+    height: 50px;
  }
 
 .addPatientButton {
     padding: 10px;
+}
+
+.deletePatient {
+padding-right: 10px;
+border: none;
+background-color: #ffffff;
+}
+
+.errors {
+    width: 200px;
+    padding-right: 10px;
+    border: none;
+    background-color: #ffffff;
+}   
+
+
+.deleteHeader {
+    border: none;
+    width: 40px;
+}
+
+.errorDiv {
+    color: red;
 }

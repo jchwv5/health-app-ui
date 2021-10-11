@@ -10,11 +10,12 @@ import Constants from '../../utils/constants';
  * @param {*} id The ID for the product that is to be deleted.
  * @returns Sends toast notifcation if it succeeds, else sets state for apiError
  */
-async function deleteProductById(setApiError, id) {
-  await HttpHelper(Constants.DELETE_PRODUCT_BY_ID_ENDPOINT + id, 'DELETE')
+async function deletePatientById(setApiError, setDeleteCount, id) {
+  await HttpHelper(Constants.PATIENT_BY_ID_ENDPOINT + id, 'DELETE')
     .catch(() => {
       setApiError(true);
     });
+  setDeleteCount(id);
 }
 
-export default deleteProductById;
+export default deletePatientById;

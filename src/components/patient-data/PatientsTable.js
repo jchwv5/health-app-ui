@@ -1,9 +1,11 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
+import DeleteIcon from '@material-ui/icons/Delete';
 import './PatientsTable.css';
 import fetchPatients from './DataViewService';
 import AddPatientForm from './AddPatientForm';
+import deletePatientById from './DeletePatientService';
 
 const PatientsTable = () => {
   // eslint-disable-next-line no-unused-vars
@@ -11,10 +13,12 @@ const PatientsTable = () => {
   // eslint-disable-next-line no-unused-vars
   const [apiError, setApiError] = useState(false);
   const [showAddPatientModal, setShowAddPatientModal] = useState(false);
+  const [deleteCount, setDeleteCount] = useState(0);
+  const [deleteError, setDeleteError] = useState(0);
 
   useEffect(() => {
     fetchPatients(setPatients, setApiError);
-  }, []);
+  }, [deleteCount]);
 
   const hideModal = () => {
     setShowAddPatientModal(false);
@@ -31,11 +35,28 @@ const PatientsTable = () => {
 
   // eslint-disable-next-line no-unused-vars
   const PatientMap = ({ data }) => data.map((patient) => (
-    <tr key={patient.id} onClick={() => handleClick(patient.id)}>
+    <tr key={patient.id}>
+      <td className="deletePatient">
+        <button
+          type="submit"
+          className="deletePatientButton"
+          variant="contained"
+          onClick={() => {
+            if (patient.encounters.length > 0) {
+              setDeleteError(patient.id);
+            } else if (patient.encounters.length === 0) {
+              deletePatientById(setApiError, setDeleteCount, patient.id);
+            }
+          }}
+        >
+          <DeleteIcon />
+        </button>
+      </td>
       <td>{patient.firstName}</td>
       <td>{patient.lastName}</td>
       <td>{patient.age}</td>
       <td>{patient.gender}</td>
+      <td className="errors">{deleteError === patient.id && <div className="errorDiv">CANNOT DELETE A PATIENT WITH ENCOUNTERS</div>}</td>
     </tr>
   ));
 
@@ -45,6 +66,7 @@ const PatientsTable = () => {
       <table className="patientsTable">
         <thead>
           <tr className="noHover">
+            <th className="deleteHeader" />
             <th>First Name</th>
             <th>Last Name</th>
             <th>Age</th>
