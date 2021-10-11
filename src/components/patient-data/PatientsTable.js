@@ -1,16 +1,29 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import './PatientsTable.css';
 import fetchPatients from './DataViewService';
+import AddPatientForm from './AddPatientForm';
 
 const PatientsTable = () => {
   // eslint-disable-next-line no-unused-vars
   const [patients, setPatients] = useState([]);
   // eslint-disable-next-line no-unused-vars
   const [apiError, setApiError] = useState(false);
+  const [showAddPatientModal, setShowAddPatientModal] = useState(false);
+
   useEffect(() => {
     fetchPatients(setPatients, setApiError);
   }, []);
+
+  const hideModal = () => {
+    setShowAddPatientModal(false);
+  };
+
+  const showModal = () => {
+    setShowAddPatientModal(true);
+    console.log(showAddPatientModal);
+  };
 
   const handleClick = (e) => {
     console.log(e);
@@ -43,7 +56,8 @@ const PatientsTable = () => {
         </tbody>
       </table>
       <div className="wrapper">
-        <button type="submit" className="addPatientButton">
+        {showAddPatientModal && <AddPatientForm onClose={() => setShowAddPatientModal(false)} />}
+        <button type="submit" className="addPatientButton" onClick={() => showModal()}>
           Add a Patient
         </button>
       </div>

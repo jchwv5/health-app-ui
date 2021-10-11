@@ -23,7 +23,7 @@ th {
 }
 
 tr:nth-child(even) {
-    background-color: #ada9a9;
+    background-color: #f1f1f1;
   }
 
 tr:hover {
