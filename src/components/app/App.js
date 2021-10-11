@@ -1,10 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import './App.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import DataTable from '../product-data-view/DataTable';
+import PatientsTable from '../patient-data/PatientsTable';
 
 /**
  * @name App
@@ -12,11 +9,10 @@ import DataTable from '../product-data-view/DataTable';
  */
 const App = () => (
   <div className="app-container">
-    <ToastContainer />
     <BrowserRouter>
       <Switch>
         <div className="content-container">
-          <Route exact path="/" render={() => <DataTable />} />
+          <Route exact path="/" render={() => <PatientsTable />} />
         </div>
       </Switch>
     </BrowserRouter>

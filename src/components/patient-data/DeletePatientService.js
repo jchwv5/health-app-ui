@@ -1,6 +1,5 @@
 import HttpHelper from '../../utils/HttpHelper';
 import Constants from '../../utils/constants';
-import notify from '../Toast/Toast';
 
 /**
  * Handles the request to the endpoint on the backend to delete the product
@@ -13,13 +12,6 @@ import notify from '../Toast/Toast';
  */
 async function deleteProductById(setApiError, id) {
   await HttpHelper(Constants.DELETE_PRODUCT_BY_ID_ENDPOINT + id, 'DELETE')
-    .then((response) => {
-      if (response.ok) {
-        return notify('success', 'Product has been successfully deleted');
-      }
-      notify('error', 'There was an problem deleting the product');
-      throw new Error(Constants.API_ERROR);
-    })
     .catch(() => {
       setApiError(true);
     });
