@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { Table } from 'react-bootstrap';
 import './PatientsTable.css';
 import fetchPatients from './DataViewService';
 
@@ -13,9 +12,13 @@ const PatientsTable = () => {
     fetchPatients(setPatients, setApiError);
   }, []);
 
+  const handleClick = (e) => {
+    console.log(e);
+  };
+
   // eslint-disable-next-line no-unused-vars
   const PatientMap = ({ data }) => data.map((patient) => (
-    <tr className="clickable-row" key={patient.id} a href="patients/details/">
+    <tr key={patient.id} onClick={() => handleClick(patient.id)}>
       <td>{patient.firstName}</td>
       <td>{patient.lastName}</td>
       <td>{patient.age}</td>
@@ -25,12 +28,10 @@ const PatientsTable = () => {
 
   return (
     <div>
-      <button type="submit" className="addPatientButton">
-        Add a Patient
-      </button>
-      <Table>
+      <h3>Patients</h3>
+      <table className="patientsTable">
         <thead>
-          <tr>
+          <tr className="noHover">
             <th>First Name</th>
             <th>Last Name</th>
             <th>Age</th>
@@ -40,7 +41,12 @@ const PatientsTable = () => {
         <tbody>
           <PatientMap data={patients} />
         </tbody>
-      </Table>
+      </table>
+      <div className="wrapper">
+        <button type="submit" className="addPatientButton">
+          Add a Patient
+        </button>
+      </div>
     </div>
   );
 };

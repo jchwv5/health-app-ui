@@ -1,5 +1,43 @@
-.addPatientButton {
-    float: right;
+.patientsTable {
+    margin-top: 40px;
+    margin-left: 20%;
+}
+
+.wrapper {
     margin-top: 20px;
-    margin-right: 20px;
+    text-align: center;
+}
+
+h3 {
+    margin-left: 25px;
+}
+
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: 60%;
+    margin-left: 10%;
+  }
+th {
+    border: 1px solid black;
+}
+
+tr:nth-child(even) {
+    background-color: #ada9a9;
+  }
+
+tr:hover {
+    background-color: rgb(148, 194, 196);
+}
+
+.noHover {
+    pointer-events: none;
+}
+
+td{ 
+    padding-left: 15px;
+ }
+
+.addPatientButton {
+    padding: 10px;
 }
