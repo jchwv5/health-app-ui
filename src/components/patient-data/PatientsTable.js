@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-has-content */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
@@ -18,7 +19,7 @@ const PatientsTable = () => {
 
   useEffect(() => {
     fetchPatients(setPatients, setApiError);
-  }, [deleteCount]);
+  }, [deleteCount, showAddPatientModal]);
 
   const hideModal = () => {
     setShowAddPatientModal(false);
@@ -26,11 +27,6 @@ const PatientsTable = () => {
 
   const showModal = () => {
     setShowAddPatientModal(true);
-    console.log(showAddPatientModal);
-  };
-
-  const handleClick = (e) => {
-    console.log(e);
   };
 
   // eslint-disable-next-line no-unused-vars
@@ -52,11 +48,23 @@ const PatientsTable = () => {
           <DeleteIcon />
         </button>
       </td>
-      <td>{patient.firstName}</td>
-      <td>{patient.lastName}</td>
-      <td>{patient.age}</td>
-      <td>{patient.gender}</td>
-      <td className="errors">{deleteError === patient.id && <div className="errorDiv">CANNOT DELETE A PATIENT WITH ENCOUNTERS</div>}</td>
+      <td>
+        {patient.firstName}
+        <a href={`patients/details/${patient.id}`} className="rowLink" />
+      </td>
+      <td>
+        {patient.lastName}
+        <a href={`patients/details/${patient.id}`} className="rowLink" />
+      </td>
+      <td>
+        {patient.age}
+        <a href={`patients/details/${patient.id}`} className="rowLink" />
+      </td>
+      <td>
+        {patient.gender}
+        <a href={`patients/details/${patient.id}`} className="rowLink" />
+      </td>
+      <td className="errors noHover">{deleteError === patient.id && <div className="errorDiv">CANNOT DELETE A PATIENT WITH ENCOUNTERS</div>}</td>
     </tr>
   ));
 
@@ -78,7 +86,11 @@ const PatientsTable = () => {
         </tbody>
       </table>
       <div className="wrapper">
-        {showAddPatientModal && <AddPatientForm onClose={() => setShowAddPatientModal(false)} />}
+        {showAddPatientModal && (
+        <AddPatientForm
+          onClose={() => setShowAddPatientModal(false)}
+        />
+        )}
         <button type="submit" className="addPatientButton" onClick={() => showModal()}>
           Add a Patient
         </button>

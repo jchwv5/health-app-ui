@@ -65,3 +65,17 @@ background-color: #ffffff;
 .errorDiv {
     color: red;
 }
+
+td {
+    position: relative;
+}
+
+td > .rowLink{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-decoration: none;
+    color: inherit;
+}

@@ -12,7 +12,7 @@ const App = () => (
     <BrowserRouter>
       <Switch>
         <div className="content-container">
-          <Route exact path="/" render={() => <PatientsTable />} />
+          <Route exact path="/patients" render={() => <PatientsTable />} />
         </div>
       </Switch>
     </BrowserRouter>
