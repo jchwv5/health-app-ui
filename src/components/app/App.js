@@ -2,6 +2,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import PatientsTable from '../patient-data/PatientsTable';
+import PatientDetails from '../patient-details/PatientDetails';
 
 /**
  * @name App
@@ -13,6 +14,7 @@ const App = () => (
       <Switch>
         <div className="content-container">
           <Route exact path="/patients" render={() => <PatientsTable />} />
+          <Route exact path="/patients/details/:patientId" render={() => <PatientDetails />} />
         </div>
       </Switch>
     </BrowserRouter>
