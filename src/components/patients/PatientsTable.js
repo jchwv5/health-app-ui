@@ -5,7 +5,8 @@ import React, { useEffect, useState } from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import './PatientsTable.css';
 import fetchPatients from './DataViewService';
-import AddPatientForm from './AddPatientForm';
+import PatientForm from './PatientForm';
+import addPatient from './AddPatientService';
 import deletePatientById from './DeletePatientService';
 
 const PatientsTable = () => {
@@ -20,10 +21,6 @@ const PatientsTable = () => {
   useEffect(() => {
     fetchPatients(setPatients, setApiError);
   }, [deleteCount, showAddPatientModal]);
-
-  const hideModal = () => {
-    setShowAddPatientModal(false);
-  };
 
   const showModal = () => {
     setShowAddPatientModal(true);
@@ -70,7 +67,7 @@ const PatientsTable = () => {
 
   return (
     <div>
-      <h3>Patients</h3>
+      <h3 className="pateintsHeader">Patients</h3>
       <table className="patientsTable">
         <thead>
           <tr className="noHover">
@@ -87,8 +84,13 @@ const PatientsTable = () => {
       </table>
       <div className="wrapper">
         {showAddPatientModal && (
-        <AddPatientForm
+        <PatientForm
           onClose={() => setShowAddPatientModal(false)}
+          patientApiCall={addPatient}
+          patientId={null}
+          formHeader="Add a Patient"
+          buttonLabel="Add Patient"
+          successMsg="Patient Updated Successfully!"
         />
         )}
         <button type="submit" className="addPatientButton" onClick={() => showModal()}>

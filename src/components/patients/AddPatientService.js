@@ -10,7 +10,8 @@ import Constants from '../../utils/constants';
  * @param {*} id The ID for the product that is to be deleted.
  * @returns Sends toast notifcation if it succeeds, else sets state for apiError
  */
-async function addPatient(
+export default async function addPatient(
+  patientId,
   firstName,
   lastName,
   ssn,
@@ -55,5 +56,3 @@ async function addPatient(
       setPatientFailure(true);
     });
 }
-
-export default addPatient;

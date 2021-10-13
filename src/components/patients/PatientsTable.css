@@ -8,8 +8,8 @@
     text-align: center;
 }
 
-h3 {
-    margin-left: 25px;
+.patientsHeader {
+    margin-left: 150px;
 }
 
 table {
@@ -41,6 +41,12 @@ td{
 
 .addPatientButton {
     padding: 10px;
+    background: #666666;
+    border-radius: 20px;
+    color: #EEEEEE;
+    cursor: pointer;
+    height: 3em;
+    width: 12em;
 }
 
 .deletePatient {

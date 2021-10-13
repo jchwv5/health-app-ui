@@ -1,14 +1,17 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
-import './AddPatientForm.css';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import validate from '../../utils/validate';
+import './PatientForm.css';
 import FormItem from '../../utils/FormItem';
-import addPatient from './AddPatientService';
+import handlePatientApiCall from './HandlePatientApiCall';
 
-const AddPatientForm = (props) => {
+const PatientForm = (props) => {
   const { onClose } = props;
+  const { patientApiCall } = props;
+  const { patientId } = props;
+  const { formHeader } = props;
+  const { buttonLabel } = props;
+  const { successMsg } = props;
   const [patientData, setPatientData] = useState({});
   const [apiError, setApiError] = useState(false);
   const [patientSuccess, setPatientSuccess] = useState(false);
@@ -29,76 +32,18 @@ const AddPatientForm = (props) => {
     gender: { dataIsValid: false, errorMessage: '' }
   });
 
-  const hasErrors = (errorInfo) => {
-    const errorList = [];
-
-    Object.values(errorInfo).forEach((e) => {
-      if (e.dataIsValid === false) {
-        errorList.push(e.dataIsValid);
-      }
-    });
-    if (errorList.length > 0) return true;
-    return false;
-  };
-
   const handleChange = (e) => {
     setPatientData((prevValue) => ({ ...prevValue, [e.target.id]: e.target.value }));
-  };
-
-  const validatePatient = (patient) => {
-    const statelessPatientErrors = {
-      ...patientErrors,
-      firstName: validate('required', 'First name', patient.firstName),
-      lastName: validate('required', 'Last name', patient.lastName),
-      ssn: validate('ssn', 'SSN', patient.ssn),
-      email: validate('email', 'Email', patient.email),
-      street: validate('required', 'State', patient.street),
-      city: validate('required', 'City', patient.city),
-      state: validate('state', 'State', patient.state),
-      postal: validate('postal', 'Zip code', patient.postal),
-      age: validate('numeric', 'Age', patient.age),
-      height: validate('numeric', 'Height', patient.height),
-      weight: validate('numeric', 'Weight', patient.weight),
-      insurance: validate('required', 'Insurance', patient.insurance),
-      gender: validate('gender', 'Gender', patient.gender)
-    };
-    setPatientErrors(statelessPatientErrors);
-
-    return { statelessPatientErrors };
-  };
-
-  const handleAddPatient = (patient) => {
-    setPatientFailure(false);
-    setPatientSuccess(false);
-    const { statelessPatientErrors } = validatePatient(patient);
-    const patientHasErrors = hasErrors(statelessPatientErrors);
-    if (!patientHasErrors) {
-      addPatient(patient.firstName,
-        patient.lastName,
-        patient.ssn,
-        patient.email,
-        patient.street,
-        patient.city,
-        patient.state,
-        patient.postal,
-        patient.age,
-        patient.height,
-        patient.weight,
-        patient.insurance,
-        patient.gender,
-        setPatientFailure,
-        setPatientSuccess,
-        setApiError);
-    }
   };
 
   return (
     <div className="formPopup" id="myForm">
       <form action="/action_page.php" className="formContainer">
-        <h1>Add A Patient</h1>
+        <h1 className="formHeader">{formHeader}</h1>
         <div className="form">
           <div className="column">
             <FormItem
+              className="input"
               type="text"
               id="firstName"
               label="First Name"
@@ -112,6 +57,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="lastName"
               label="Last Name"
@@ -125,6 +71,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="ssn"
               label="SSN"
@@ -138,6 +85,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="email"
               label="Email"
@@ -153,6 +101,7 @@ const AddPatientForm = (props) => {
           </div>
           <div className="column">
             <FormItem
+              className="input"
               type="text"
               id="street"
               label="Street"
@@ -166,6 +115,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="city"
               label="City"
@@ -179,6 +129,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="state"
               label="State"
@@ -192,6 +143,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="postal"
               label="Zip Code"
@@ -207,6 +159,7 @@ const AddPatientForm = (props) => {
           </div>
           <div className="column">
             <FormItem
+              className="input"
               type="text"
               id="age"
               label="Age"
@@ -220,6 +173,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="height"
               label="Height (in Inches)"
@@ -233,6 +187,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="weight"
               label="Weight (in Pounds)"
@@ -246,6 +201,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="insurance"
               label="Insurance Provider"
@@ -259,6 +215,7 @@ const AddPatientForm = (props) => {
               )}
             </div>
             <FormItem
+              className="input"
               type="text"
               id="gender"
               label="Gender"
@@ -277,19 +234,31 @@ const AddPatientForm = (props) => {
       <div className="buttonWrapper">
         <div className="serverMsgDiv">
           {patientSuccess === true && (
-          <p className="successMsg">Patient Added Successfully!</p>
+          <p className="successMsg">{successMsg}</p>
           )}
           {patientFailure === true && (
           <p className="failureMsg">Oops! Something went wrong!</p>
           )}
         </div>
-        <button type="submit" className="btn" onClick={() => handleAddPatient(patientData)}>Add Patient</button>
+        <button
+          type="submit"
+          className="btn"
+          onClick={() => handlePatientApiCall(patientData,
+            patientId,
+            setPatientSuccess,
+            setPatientFailure,
+            patientErrors,
+            setPatientErrors,
+            setApiError,
+            patientApiCall)}
+        >
+          {buttonLabel}
+        </button>
         <button type="button" className="btn cancel" onClick={onClose}>Close</button>
       </div>
-      <div className="modalCover" />
     </div>
 
   );
 };
 
-export default AddPatientForm;
+export default PatientForm;

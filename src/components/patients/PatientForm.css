@@ -2,7 +2,7 @@
   position:absolute;
   top:30%;
   left:25%;    
-  margin-top:-200px;
+  margin-top:-300px;
   width: 800px;
   height: 800px;
   background-color: white;
@@ -21,11 +21,15 @@
   flex: 33%;
 }
 
+.formHeader {
+  text-align: center;
+}
+
 .btn {
   background-color: #04AA6D;
   color: white;
   padding: 16px 20px;
-  border: none;
+  border-radius: 20px;
   cursor: pointer;
   width: 20%;
   float: left;
@@ -51,7 +55,7 @@
   height: 40px;
   color: red;
   font-size: 14px;
-  margin: 0px 2px 4px 4px;
+  margin: 15px 2px 4px 4px;
 }
 
 .serverMsgDiv {
@@ -66,4 +70,8 @@
 
 .failureMsg {
   color: red;
+}
+
+.input {
+  position: fixed;
 }
