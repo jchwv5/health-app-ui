@@ -1,0 +1,80 @@
+.formPopup {
+    position:absolute;
+    top:30%;
+    left:25%;    
+    margin-top:-300px;
+    width: 800px;
+    height: 800px;
+    background-color: white;
+    opacity: 100%;
+  }
+  
+  .formContainer {
+    max-width: 100%;
+    padding: 10px;
+    
+  }
+  
+  .form {
+    display: flex;  }
+  
+  .column {
+    flex: 33%;
+  }
+  
+  .formHeader {
+    text-align: center;
+  }
+  
+  .btn {
+    background-color: #04AA6D;
+    color: white;
+    padding: 16px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 20%;
+    float: left;
+    margin-bottom:10px;
+    margin-left: 150px;
+    opacity: 0.8;
+  }
+  
+  .cancel {
+    background-color: red;
+    margin-left: 100px;
+  }
+  
+  .btn:hover, .open-button:hover {
+    opacity: 1;
+  }
+  
+  .buttonWrapper {
+    align-items: left;
+    background-color: white;
+  }
+  
+  .errorDiv {
+    height: 40px;
+    color: red;
+    font-size: 14px;
+    margin: 15px 2px 4px 4px;
+  }
+  
+  .serverMsgDiv {
+    height: 40px;
+    font-size: 14px;
+    margin: 0px 2px 4px 4px;
+  }
+  
+  .successMsg {
+    color: green;
+  }
+  
+  .failureMsg {
+    color: red;
+  }
+  
+  .input {
+    position: fixed;
+  }
+  

@@ -1,6 +1,8 @@
 .patientsTable {
     margin-top: 40px;
     margin-left: 20%;
+    border-collapse: collapse;
+    width: 60%;
 }
 
 .wrapper {
@@ -12,11 +14,6 @@
     margin-left: 150px;
 }
 
-table {
-    border-collapse: collapse;
-    width: 60%;
-    margin-left: 10%;
-  }
 th {
     border: 1px solid black;
 }
@@ -37,6 +34,7 @@ td{
     padding-left: 15px;
     border: 1px solid black;
     height: 50px;
+    position: relative;
  }
 
 .addPatientButton {
@@ -50,9 +48,9 @@ td{
 }
 
 .deletePatient {
-padding-right: 10px;
-border: none;
-background-color: #ffffff;
+    padding-right: 10px;
+    border: none;
+    background-color: #ffffff;
 }
 
 .errors {
@@ -70,10 +68,6 @@ background-color: #ffffff;
 
 .errorDiv {
     color: red;
-}
-
-td {
-    position: relative;
 }
 
 td > .rowLink{

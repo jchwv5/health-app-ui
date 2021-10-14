@@ -9,7 +9,7 @@ import constants from '../../utils/constants';
  * @param {*} setApiError sets error if response other than 200 is returned
  * @returns sets state for products if 200 response, else sets state for apiError
  */
-export default async function fetchPatients(setProducts, setApiError) {
+export default async function fetchPatients(setPatients, setApiError) {
   await HttpHelper(constants.ALL_PATIENTS_ENDPOINT, 'GET')
     .then((response) => {
       if (response.ok) {
@@ -17,7 +17,7 @@ export default async function fetchPatients(setProducts, setApiError) {
       }
       throw new Error(constants.API_ERROR);
     })
-    .then(setProducts)
+    .then(setPatients)
     .catch(() => {
       setApiError(true);
     });

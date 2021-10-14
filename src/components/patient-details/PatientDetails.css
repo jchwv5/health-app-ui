@@ -25,6 +25,12 @@
   position: relative;
 }
 
+.viewEditDetails {
+  padding-right: 5px;
+  border: none;
+  background-color: #ffffff;
+}
+
 .input-field {
   position: relative;
   margin-top: 0rem;
@@ -44,7 +50,7 @@
   margin-top: 2em;
 }
 
-.saveButton, .historyButton, .editButton {
+.saveButton, .historyButton, .editButton, .addEncounterButton {
   background: #666666;
   border-radius: 20px;
   color: #EEEEEE;
@@ -52,4 +58,30 @@
   height: 3em;
   width: 12em;
 }
+
+.viewDetailsButton, .editDetailsButton, .closeButton {
+  border-radius: 20px;
+  background: #666666;
+  color: #EEEEEE;
+}
+
+.encountersTable {
+  border-collapse: collapse;
+  width: 32%;
+  margin-left: 20%;
+}
   
+.encountersTd {
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 1px solid black;
+  height: 35px;
+  position: relative;
+}
+
+.encounterIdTd {
+  width: 40px;
+  border: 1px solid black;
+  height: 35px;
+  position: relative;
+}

@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import './PatientsTable.css';
-import fetchPatients from './DataViewService';
+import fetchPatients from './FetchPatientsService';
 import PatientForm from './PatientForm';
 import addPatient from './AddPatientService';
 import deletePatientById from './DeletePatientService';

@@ -7,15 +7,19 @@
  * @param {String} data - value of the form field
  * @returns boolean whether the field is valid, error message if any in the form of an array.
  */
-const currencyRegex = /^\$?\d+(?:\.\d\d)$/;
+
 const alphaRegex = /^[a-zA-Z\s]+$/;
 const alphaNumRegex = /^([1-zA-Z0-1@.\s]{1,255})$/;
 const numRegex = /^\d+$/;
 const postalRegex = /^[0-9]{5}(?:-[0-9]{4})?$/;
-const dateRegex = /((\d{2})|(\d))\/((\d{2})|(\d))/;
+const dateRegex = /\d{4}-\d{2}-\d{2}/;
 const emailRegex = /\S+@\S+\.\S+/;
 const ssnRegex = /^(?!666|000|9\d{2})\d{3}-(?!00)\d{2}-(?!0{4})\d{4}$/;
 const stateRegex = /^(([Aa][EeLlKkSsZzRr])|([Cc][AaOoTt])|([Dd][EeCc])|([Ff][MmLl])|([Gg][AaUu])|([Hh][Ii])|([Ii][DdLlNnAa])|([Kk][SsYy])|([Ll][Aa])|([Mm][EeHhDdAaIiNnSsOoTt])|([Nn][EeVvHhJjMmYyCcDd])|([Mm][Pp])|([Oo][HhKkRr])|([Pp][WwAaRr])|([Rr][Ii])|([Ss][CcDd])|([Tt][NnXx])|([Uu][Tt])|([Vv][TtIiAa])|([Ww][AaVvIiYy]))$/;
+const visitCodeRegex = /^[A-Z]\d[A-Z]\s\d[A-Z]\d$/;
+const billingCodeRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
+const icd10Regex = /^[A-Z]\d{2}$/;
+const currencyRegex = /(0|[1-9][0-9]{0,2})(,\d{3})*(\.\d{1,2})?$/;
 
 const validate = (type, name, data) => {
   let isDataValid = true;
@@ -72,7 +76,7 @@ const validate = (type, name, data) => {
         errorMsg = `${name} field must not be left empty`;
       } else if (!(dateRegex.test(data))) {
         isDataValid = false;
-        errorMsg = `${name} must be in the proper format (DD/MM)`;
+        errorMsg = `${name} must be in the proper format (YYYY-DD-MM)`;
       }
       break;
     case 'currency':
@@ -110,6 +114,41 @@ const validate = (type, name, data) => {
       } else if (data !== "male" && data !== "female" && data !== "other" && data !== "Male" && data !== "Female" && data !== "Other") {
         isDataValid = false;
         errorMsg = `${name} field should be male, female, or other`;
+      }
+      break;
+    case 'visitCode':
+      if (!data || data.trim() === '') {
+        isDataValid = false;
+        errorMsg = `${name} field must not be left empty`;
+      } else if (!(visitCodeRegex.test(data))) {
+        isDataValid = false;
+        errorMsg = `${name} must be in LDL DLD format`;
+      }
+      break;
+    case 'billingCode':
+      if (!data || data.trim() === '') {
+        isDataValid = false;
+        errorMsg = `${name} field must not be left empty`;
+      } else if (!(billingCodeRegex.test(data))) {
+        isDataValid = false;
+        errorMsg = `${name} must be in DDD.DDD.DDD-DD format`;
+      }
+      break;
+    case 'icd10':
+      if (!data || data.trim() === '') {
+        isDataValid = false;
+        errorMsg = `${name} field must not be left empty`;
+      } else if (!(icd10Regex.test(data))) {
+        isDataValid = false;
+        errorMsg = `${name} must be in LDD format`;
+      }
+      break;
+    case 'nonRequiredNum':
+      if (data.trim() !== '') {
+        if (!(numRegex.test(data))) {
+          isDataValid = false;
+          errorMsg = `${name} must be a number`;
+        }
       }
       break;
     case 'required':
