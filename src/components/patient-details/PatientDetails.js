@@ -8,6 +8,7 @@ import updatePatient from '../patients/EditPatientService';
 import { fetchEncounters, fetchEncounterById } from '../encounters/FetchEncountersService';
 import EncounterForm from '../encounters/EncounterForm';
 import updateEncounter from '../encounters/EditEncounterService';
+import addEncounter from '../encounters/AddEncounterService';
 
 const PatientDetails = () => {
   const params = useParams();
@@ -167,27 +168,6 @@ const PatientDetails = () => {
           </>
         </div>
         )}
-        {showEditPatientModal && (
-        <PatientForm
-          onClose={() => setShowEditPatientModal(false)}
-          patientApiCall={updatePatient}
-          patientId={patientId}
-          formHeader="Edit Patient"
-          buttonLabel="Edit Patient"
-          successMsg="Patient Updated Successfully!"
-        />
-        )}
-        {showEditEncounterModal && (
-        <EncounterForm
-          onClose={() => setShowEditEncounterModal(false)}
-          patientApiCall={updateEncounter}
-          patientId={patientId}
-          encounterId={editEncounterId}
-          formHeader="Edit Encounter"
-          buttonLabel="Edit Encounter"
-          successMsg="Encounter Updated Successfully!"
-        />
-        )}
         <div className="encountersContainter">
           <h4 className="encountersHeader">Encounters</h4>
           <button
@@ -323,6 +303,17 @@ const PatientDetails = () => {
         formHeader="Edit Encounter"
         buttonLabel="Edit Encounter"
         successMsg="Encounter Updated Successfully!"
+      />
+      )}
+      {showAddEncounterModal && (
+      <EncounterForm
+        onClose={() => setShowAddEncounterModal(false)}
+        encounterApiCall={addEncounter}
+        patientId={patientId}
+        encounterId={null}
+        formHeader="Add Encounter"
+        buttonLabel="Add Encounter"
+        successMsg="Encounter Added Successfully!"
       />
       )}
     </div>
