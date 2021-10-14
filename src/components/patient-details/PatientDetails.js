@@ -17,6 +17,7 @@ const PatientDetails = () => {
   const [patient, setPatient] = useState({});
   const [patientApiError, setPatientApiError] = useState(false);
   const [encounters, setEncounters] = useState([]);
+  const [encounterDetailsId, setEncounterDetailsId] = useState(1);
   const [encounterDetails, setEncounterDetails] = useState({});
   const [encounterApiError, setEncounterApiError] = useState(false);
   const [showEditPatientModal, setShowEditPatientModal] = useState(false);
@@ -27,11 +28,16 @@ const PatientDetails = () => {
   useEffect(() => {
     fetchEncounters(setEncounters, setEncounterApiError, patientId);
     fetchPatientInfo(setPatient, setPatientApiError, patientId);
-  }, [patientId, showEditPatientModal, showAddEncounterModal, showEditEncounterModal]);
+    fetchEncounterById(setEncounterDetails, setEncounterApiError, patientId, encounterDetailsId);
+  }, [patientId,
+    encounterDetailsId,
+    showEditPatientModal,
+    showAddEncounterModal,
+    showEditEncounterModal]);
 
-  const handleViewDetails = (id, encounterId) => {
+  const handleViewDetails = (id) => {
+    setEncounterDetailsId(id);
     setShowEncounterDetails(true);
-    fetchEncounterById(setEncounterDetails, setEncounterApiError, id, encounterId);
   };
 
   const handleEditEncounterDetails = (encounterId) => {
@@ -46,7 +52,7 @@ const PatientDetails = () => {
           type="submit"
           className="viewDetailsButton"
           variant="contained"
-          onClick={() => handleViewDetails(patientId, encounter.id)}
+          onClick={() => handleViewDetails(encounter.id)}
         >
           View Details
         </button>

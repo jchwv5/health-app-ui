@@ -8,7 +8,6 @@
  * @returns boolean whether the field is valid, error message if any in the form of an array.
  */
 
-const alphaRegex = /^[a-zA-Z\s]+$/;
 const alphaNumRegex = /^([1-zA-Z0-1@.\s]{1,255})$/;
 const numRegex = /^\d+$/;
 const postalRegex = /^[0-9]{5}(?:-[0-9]{4})?$/;
@@ -25,15 +24,6 @@ const validate = (type, name, data) => {
   let isDataValid = true;
   let errorMsg = '';
   switch (type) {
-    case 'text':
-      if (!data || data.trim() === '') {
-        isDataValid = false;
-        errorMsg = `${name} field must not be left empty`;
-      } else if (!(alphaRegex).test(data)) {
-        isDataValid = false;
-        errorMsg = `${name} should be letters only`;
-      }
-      break;
     case 'numeric':
       if (!data || data.trim() === '') {
         isDataValid = false;
@@ -144,7 +134,7 @@ const validate = (type, name, data) => {
       }
       break;
     case 'nonRequiredNum':
-      if (data.trim() !== '') {
+      if (data) {
         if (!(numRegex.test(data))) {
           isDataValid = false;
           errorMsg = `${name} must be a number`;

@@ -7,7 +7,7 @@ const validatePatient = (patient, patientErrors, setPatientErrors) => {
     lastName: validate('required', 'Last name', patient.lastName),
     ssn: validate('ssn', 'SSN', patient.ssn),
     email: validate('email', 'Email', patient.email),
-    street: validate('required', 'State', patient.street),
+    street: validate('required', 'Street', patient.street),
     city: validate('required', 'City', patient.city),
     state: validate('state', 'State', patient.state),
     postal: validate('postal', 'Zip code', patient.postal),

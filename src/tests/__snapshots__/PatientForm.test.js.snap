@@ -1,0 +1,389 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component matches snapshot 1`] = `
+<div
+  className="formPopup"
+  id="myForm"
+>
+  <form
+    action="/action_page.php"
+    className="formContainer"
+  >
+    <h1
+      className="formHeader"
+    />
+    <div
+      className="form"
+    >
+      <div
+        className="column"
+      >
+        <div>
+          <label
+            className="label"
+            htmlFor="firstName"
+          >
+            First Name
+            <div>
+              <input
+                className="input"
+                id="firstName"
+                onChange={[Function]}
+                placeholder="ex. John"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="lastName"
+          >
+            Last Name
+            <div>
+              <input
+                className="input"
+                id="lastName"
+                onChange={[Function]}
+                placeholder="ex. Smith"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="ssn"
+          >
+            SSN
+            <div>
+              <input
+                className="input"
+                id="ssn"
+                onChange={[Function]}
+                placeholder="ex. 555-55-5555"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="email"
+          >
+            Email
+            <div>
+              <input
+                className="input"
+                id="email"
+                onChange={[Function]}
+                placeholder="ex. john.smith@gmail.com"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div>
+          <label
+            className="label"
+            htmlFor="street"
+          >
+            Street
+            <div>
+              <input
+                className="input"
+                id="street"
+                onChange={[Function]}
+                placeholder="123 Test Street"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="city"
+          >
+            City
+            <div>
+              <input
+                className="input"
+                id="city"
+                onChange={[Function]}
+                placeholder="ex. Denver"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="state"
+          >
+            State
+            <div>
+              <input
+                className="input"
+                id="state"
+                onChange={[Function]}
+                placeholder="ex. CO"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="postal"
+          >
+            Zip Code
+            <div>
+              <input
+                className="input"
+                id="postal"
+                onChange={[Function]}
+                placeholder="ex. 55555-5555"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div>
+          <label
+            className="label"
+            htmlFor="age"
+          >
+            Age
+            <div>
+              <input
+                className="input"
+                id="age"
+                onChange={[Function]}
+                placeholder="ex. 54"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="height"
+          >
+            Height (in Inches)
+            <div>
+              <input
+                className="input"
+                id="height"
+                onChange={[Function]}
+                placeholder="ex. 72"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="weight"
+          >
+            Weight (in Pounds)
+            <div>
+              <input
+                className="input"
+                id="weight"
+                onChange={[Function]}
+                placeholder="ex. 195"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="insurance"
+          >
+            Insurance Provider
+            <div>
+              <input
+                className="input"
+                id="insurance"
+                onChange={[Function]}
+                placeholder="ex. Blue Cross"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="gender"
+          >
+            Gender
+            <div>
+              <input
+                className="input"
+                id="gender"
+                onChange={[Function]}
+                placeholder="Enter Male, Female or Other"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div
+    className="buttonWrapper"
+  >
+    <div
+      className="serverMsgDiv"
+    />
+    <button
+      className="btn"
+      onClick={[Function]}
+      type="submit"
+    />
+    <button
+      className="btn cancel"
+      type="button"
+    >
+      Close
+    </button>
+  </div>
+</div>
+`;

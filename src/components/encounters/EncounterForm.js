@@ -75,8 +75,8 @@ const EncounterForm = (props) => {
               value={encounterData.provider}
             />
             <div className="errorDiv">
-              {encounterErrors.visitCode.dataIsValid === false && (
-              <p className="errorMsg">{encounterErrors.visitCode.errorMessage}</p>
+              {encounterErrors.provider.dataIsValid === false && (
+              <p className="errorMsg">{encounterErrors.provider.errorMessage}</p>
               )}
             </div>
             <FormItem
@@ -127,7 +127,7 @@ const EncounterForm = (props) => {
               className="input"
               type="text"
               id="copay"
-              label="Copay"
+              label="Copay*"
               placeholder="ex. 100"
               onChange={handleChange}
               value={encounterData.copay}
@@ -141,7 +141,7 @@ const EncounterForm = (props) => {
               className="input"
               type="text"
               id="chiefComplaint"
-              label="Chief Complaint"
+              label="Chief Complaint*"
               placeholder="ex. Broken Arm"
               onChange={handleChange}
               value={encounterData.chiefComplaint}
@@ -224,6 +224,7 @@ const EncounterForm = (props) => {
         <button
           type="submit"
           className="btn"
+          id="callButton"
           onClick={() => HandleEncounterApiCall(encounterData,
             patientId,
             encounterId,

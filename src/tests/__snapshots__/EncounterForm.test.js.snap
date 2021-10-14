@@ -1,0 +1,358 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component matches snapshot 1`] = `
+<div
+  className="formPopup"
+  id="myForm"
+>
+  <form
+    action="/action_page.php"
+    className="formContainer"
+  >
+    <h1
+      className="formHeader"
+    />
+    <p>
+      (fields with a * are required)
+    </p>
+    <div
+      className="form"
+    >
+      <div
+        className="column"
+      >
+        <div>
+          <label
+            className="label"
+            htmlFor="notes"
+          >
+            Notes
+            <div>
+              <input
+                className="input"
+                id="notes"
+                onChange={[Function]}
+                placeholder="Please enter any notes"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="visitCode"
+          >
+            Visit Code*
+            <div>
+              <input
+                className="input"
+                id="visitCode"
+                onChange={[Function]}
+                placeholder="ex. H1H 1H1"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="provider"
+          >
+            Provider*
+            <div>
+              <input
+                className="input"
+                id="provider"
+                onChange={[Function]}
+                placeholder="ex. Dr. Mitchell"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="billingCode"
+          >
+            Billing Code*
+            <div>
+              <input
+                className="input"
+                id="billingCode"
+                onChange={[Function]}
+                placeholder="ex. 123.456.789-00"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div>
+          <label
+            className="label"
+            htmlFor="icd10"
+          >
+            ICD10*
+            <div>
+              <input
+                className="input"
+                id="icd10"
+                onChange={[Function]}
+                placeholder="ex. A12"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="totalCost"
+          >
+            Total Cost*
+            <div>
+              <input
+                className="input"
+                id="totalCost"
+                onChange={[Function]}
+                placeholder="ex. 1000"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="copay"
+          >
+            Copay*
+            <div>
+              <input
+                className="input"
+                id="copay"
+                onChange={[Function]}
+                placeholder="ex. 100"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="chiefComplaint"
+          >
+            Chief Complaint*
+            <div>
+              <input
+                className="input"
+                id="chiefComplaint"
+                onChange={[Function]}
+                placeholder="ex. Broken Arm"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+      </div>
+      <div
+        className="column"
+      >
+        <div>
+          <label
+            className="label"
+            htmlFor="pulse"
+          >
+            Pulse
+            <div>
+              <input
+                className="input"
+                id="pulse"
+                onChange={[Function]}
+                placeholder="ex. 90"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="systolic"
+          >
+            Systolic
+            <div>
+              <input
+                className="input"
+                id="systolic"
+                onChange={[Function]}
+                placeholder="ex. 100"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="diastolic"
+          >
+            Diastolic
+            <div>
+              <input
+                className="input"
+                id="diastolic"
+                onChange={[Function]}
+                placeholder="ex. 88"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+        <div>
+          <label
+            className="label"
+            htmlFor="date"
+          >
+            Encounter Date*
+            <div>
+              <input
+                className="input"
+                id="date"
+                onChange={[Function]}
+                placeholder="ex. 2020-01-01"
+                type="text"
+              />
+            </div>
+          </label>
+        </div>
+        <div
+          className="errorDiv"
+        >
+          <p
+            className="errorMsg"
+          >
+            
+          </p>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div
+    className="buttonWrapper"
+  >
+    <div
+      className="serverMsgDiv"
+    />
+    <button
+      className="btn"
+      id="callButton"
+      onClick={[Function]}
+      type="submit"
+    />
+    <button
+      className="btn cancel"
+      type="button"
+    >
+      Close
+    </button>
+  </div>
+</div>
+`;
