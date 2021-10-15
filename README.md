@@ -1,6 +1,6 @@
 # Sports Apparel, Inc.
 
-This is a starter project for a Sports Apparel Company that was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a proof-of-conecpt of a patient and encounter management system for Super Health Inc.  [Create React App](https://github.com/facebook/create-react-app).
 
 ## Install Prerequisites
 
@@ -27,7 +27,13 @@ The page will reload if you make edits.\
 You will also see any lint errors in the console.
 
 ## Dependencies
-* Sports apparel api must be running. Confer with team resources if you are unsure.
+* patients.api must be running. patients.api can be cloned [here](https://gitlab.ce.catalyte.io/jhelton/jh-final-project-api)
+
+## Usage
+* UI can be used to view, add, edit and delete patients from the API, as well as view, add, and edit encounters from the API
 
 ## Testing
-* You can run tests with coverage via `npm run test:coverage`
+* You can run tests with coverage via `npm test -- --coverage --watchAll`
+
+## Linting
+* Linting is managed by ESLint Airbnb configuration (available [here](https://www.npmjs.com/package/eslint-config-airbnb)).  Code can be linted manually by running `npm run lint -- --fix`
