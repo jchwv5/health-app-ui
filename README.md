@@ -1,6 +1,6 @@
-# Sports Apparel, Inc.
+# Super Health, Inc.
 
-This project is a proof-of-conecpt of a patient and encounter management system for Super Health Inc.  [Create React App](https://github.com/facebook/create-react-app).
+This project is a proof-of-conecpt of a patient and encounter management system for Super Health, Inc.  [Create React App](https://github.com/facebook/create-react-app).
 
 ## Install Prerequisites
 
