@@ -2,12 +2,10 @@ import constants from '../../utils/constants';
 import HttpHelper from '../../utils/HttpHelper';
 
 /**
- *
- * @name fetchProducts
- * @description Utilizes HttpHelper to make a get request to an API
- * @param {*} setProducts sets state for products
- * @param {*} setApiError sets error if response other than 200 is returned
- * @returns sets state for products if 200 response, else sets state for apiError
+ * gets all encounters associated with a patientID from the API
+ * @param {*} setEncounters - sets state for encounters to be shown on patient details page
+ * @param {*} setApiError - sets API error if call fails
+ * @param {*} id - patient ID to get encounters for
  */
 async function fetchEncounters(setEncounters, setApiError, id) {
   await HttpHelper(`${constants.PATIENT_BY_ID_ENDPOINT + id}/encounters`, 'GET')
@@ -22,7 +20,13 @@ async function fetchEncounters(setEncounters, setApiError, id) {
       setApiError(true);
     });
 }
-
+/**
+ * gets a specific encounter from the API to display in encounter details display
+ * @param {*} setEncounter - sets state for encounter to be displayed
+ * @param {*} setApiError - sets state for API error if call fails
+ * @param {*} patientId - patient ID associated with the encounter
+ * @param {*} encounterId - ID of the encounter to be retrieved
+ */
 async function fetchEncounterById(setEncounter, setApiError, patientId, encounterId) {
   await HttpHelper(`${constants.PATIENT_BY_ID_ENDPOINT + patientId}/encounters/${encounterId}`, 'GET')
     .then((response) => {

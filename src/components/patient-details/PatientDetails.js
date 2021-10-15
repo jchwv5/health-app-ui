@@ -10,6 +10,10 @@ import EncounterForm from '../encounters/EncounterForm';
 import updateEncounter from '../encounters/EditEncounterService';
 import addEncounter from '../encounters/AddEncounterService';
 
+/**
+ * Patient details component for viewing and editing patient and encounter details
+ * @returns patient details page
+ */
 const PatientDetails = () => {
   const params = useParams();
   const { patientId } = params;
@@ -25,6 +29,9 @@ const PatientDetails = () => {
   const [showAddEncounterModal, setShowAddEncounterModal] = useState(false);
   const [showEditEncounterModal, setShowEditEncounterModal] = useState(false);
 
+  /**
+ *Updates page dynamically when any information has been changed
+ */
   useEffect(() => {
     fetchEncounters(setEncounters, setEncounterApiError, patientId);
     fetchPatientInfo(setPatient, setPatientApiError, patientId);
@@ -35,16 +42,28 @@ const PatientDetails = () => {
     showAddEncounterModal,
     showEditEncounterModal]);
 
+  /**
+ *Triggers encounter details fields to become visible on button click
+ * @param {*} id
+ */
   const handleViewDetails = (id) => {
     setEncounterDetailsId(id);
     setShowEncounterDetails(true);
   };
 
+  /**
+   * Triggers edit encounter form to become visible on button click
+   * @param {*} encounterId - id of encounter to be edited
+   */
   const handleEditEncounterDetails = (encounterId) => {
     setShowEditEncounterModal(true);
     setEditEncounterId(encounterId);
   };
 
+  /**
+   * Maps array of encounters associated with patient to be displayed in the encounters table
+   * @returns - mapped encounter objects to be displayed in encounters table
+   */
   const EncounterMap = ({ data }) => data.map((encounter) => (
     <tr key={encounter.id}>
       <td className="viewEditDetails">
@@ -290,6 +309,9 @@ const PatientDetails = () => {
         </div>
         )}
       </div>
+      {/*
+      displays patient form in edit patient mode
+       */}
       {showEditPatientModal && (
       <PatientForm
         onClose={() => setShowEditPatientModal(false)}
@@ -300,6 +322,9 @@ const PatientDetails = () => {
         successMsg="Patient Updated Successfully!"
       />
       )}
+      {/*
+      displays encounter form in edit encounter mode
+       */}
       {showEditEncounterModal && (
       <EncounterForm
         onClose={() => setShowEditEncounterModal(false)}
@@ -311,6 +336,9 @@ const PatientDetails = () => {
         successMsg="Encounter Updated Successfully!"
       />
       )}
+      {/*
+      displays encounter form in add encounter mode
+       */}
       {showAddEncounterModal && (
       <EncounterForm
         onClose={() => setShowAddEncounterModal(false)}

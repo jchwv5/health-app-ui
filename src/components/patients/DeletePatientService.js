@@ -2,13 +2,11 @@ import HttpHelper from '../../utils/HttpHelper';
 import Constants from '../../utils/constants';
 
 /**
- * Handles the request to the endpoint on the backend to delete the product
- * with the matching product id
- * @name deleteProductById
- * @description Utilizes HttpHelper to make a get request to an API
- * @param {*} setApiError sets error if response other than 200 is returned
- * @param {*} id The ID for the product that is to be deleted.
- * @returns Sends toast notifcation if it succeeds, else sets state for apiError
+ * API call to delete a patient from the database,
+ * provided that they have no encounters associated with them
+ * @param {*} setApiError - state function to set API error if call fails
+ * @param {*} setDeleteCount - state function to trigger page display to reload
+ * @param {*} id - ID of patient to be deleted
  */
 async function deletePatientById(setApiError, setDeleteCount, id) {
   await HttpHelper(Constants.PATIENT_BY_ID_ENDPOINT + id, 'DELETE')

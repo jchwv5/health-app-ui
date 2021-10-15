@@ -1,3 +1,6 @@
+/**
+ * constants for application endpoints
+ */
 module.exports = Object.freeze({
   ALL_PATIENTS_ENDPOINT: '/patients',
   API_ERROR: 'Oops, something went wrong',

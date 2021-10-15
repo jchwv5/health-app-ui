@@ -5,6 +5,12 @@ import './PatientForm.css';
 import FormItem from '../../utils/FormItem';
 import handlePatientApiCall from './HandlePatientApiCall';
 
+/**
+ * Modular form to be used for adding new patients and updating existing patients
+ * @param {*} props - takes in parameters from onClick that calls the form to determine whether
+ * form will be used for adding a new patient or updating an existing one
+ * @returns - form component
+ */
 const PatientForm = (props) => {
   const { onClose } = props;
   const { patientApiCall } = props;

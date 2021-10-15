@@ -9,6 +9,10 @@ import PatientForm from './PatientForm';
 import addPatient from './AddPatientService';
 import deletePatientById from './DeletePatientService';
 
+/**
+ * patients page for viewing and deleting patients
+ * @returns patients table component
+ */
 const PatientsTable = () => {
   // eslint-disable-next-line no-unused-vars
   const [patients, setPatients] = useState([]);
@@ -18,10 +22,16 @@ const PatientsTable = () => {
   const [deleteCount, setDeleteCount] = useState(0);
   const [deleteError, setDeleteError] = useState(0);
 
+  /**
+ *Updates page dynamically when any information has been changed
+ */
   useEffect(() => {
     fetchPatients(setPatients, setApiError);
   }, [deleteCount, showAddPatientModal]);
 
+  /**
+   * triggers patient form to become visible on button click
+   */
   const showModal = () => {
     setShowAddPatientModal(true);
   };
@@ -83,6 +93,7 @@ const PatientsTable = () => {
         </tbody>
       </table>
       <div className="wrapper">
+        {/* displays patient form in add patient mode */}
         {showAddPatientModal && (
         <PatientForm
           onClose={() => setShowAddPatientModal(false)}

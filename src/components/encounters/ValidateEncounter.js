@@ -1,5 +1,11 @@
 import validate from '../../utils/validate';
-
+/**
+ * validates encounter based on specific parameters
+ * @param {*} encounter - encounter to be validated
+ * @param {*} encounterErrors - errors to base stateless errors
+ * @param {*} setEncounterErrors - state function to set errors
+ * @returns - array of stateless errors
+ */
 const validateEncounter = (encounter, encounterErrors, setEncounterErrors) => {
   const statelessEncounterErrors = {
     ...encounterErrors,

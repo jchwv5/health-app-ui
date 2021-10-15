@@ -7,6 +7,7 @@ import PatientsTable from '../patients/PatientsTable';
 import PatientDetails from '../patient-details/PatientDetails';
 
 /**
+ * Main app for router
  * @name App
  * @returns component
  */

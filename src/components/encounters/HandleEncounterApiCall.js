@@ -1,5 +1,9 @@
 import validateEncounter from './ValidateEncounter';
-
+/**
+ * checks whether the encounter provided has passed validation
+ * @param {*} errorInfo - stateless error list passed in by validation function
+ * @returns - array containing all validation errors
+ */
 const hasErrors = (errorInfo) => {
   const errorList = [];
 
@@ -12,6 +16,19 @@ const hasErrors = (errorInfo) => {
   return false;
 };
 
+/**
+ * validates the passed encounter, then parses encounter to be passed to specified API call
+ * @param {*} encounter - encounter to be validated
+ * @param {*} patientId - patient ID associated with the encounter
+ * @param {*} encounterId - ID of the encounter
+ * @param {*} setEncounterSuccess - state function to be passed to API call
+ * @param {*} setEncounterFailure - state function to be passed to API call
+ * @param {*} encounterErrors - errors array to be passed to validation method
+ * @param {*} setEncounterErrors - state function to set encounter errors to trigger error divs if
+ * encounter fails validation
+ * @param {*} setEncounterApiError state function to be passed to API call
+ * @param {*} encounterApiCall - specific API call to be made if encounter passes validation
+ */
 const handlePatientApiCall = (encounter,
   patientId,
   encounterId,

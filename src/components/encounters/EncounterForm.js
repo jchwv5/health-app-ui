@@ -5,6 +5,13 @@ import './EncounterForm.css';
 import FormItem from '../../utils/FormItem';
 import HandleEncounterApiCall from './HandleEncounterApiCall';
 
+/**
+ * Modular form to be used for adding new encounters and updating existing encounters
+ * @param {*} props - takes in parameters from onClick that calls the form to determine whether
+ * form will be used for adding a new encounter or updating an existing one
+ * @returns - form component
+ */
+
 const EncounterForm = (props) => {
   const { onClose } = props;
   const { encounterApiCall } = props;
@@ -30,7 +37,10 @@ const EncounterForm = (props) => {
     diastolic: { dataIsValid: false, errorMessage: '' },
     date: { dataIsValid: false, errorMessage: '' }
   });
-
+  /**
+ * function to take user input and assign it to the value for that field
+ * @param {*} e - input field that is receiving user input
+ */
   const handleChange = (e) => {
     setEncounterData((prevValue) => ({ ...prevValue, [e.target.id]: e.target.value }));
   };

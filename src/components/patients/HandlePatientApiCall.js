@@ -1,5 +1,10 @@
 import validatePatient from './ValidatePatient';
 
+/**
+ * checks whether the patient provided has passed validation
+ * @param {*} errorInfo - stateless error list passed in by validation function
+ * @returns - array containing all validation errors
+ */
 const hasErrors = (errorInfo) => {
   const errorList = [];
 
@@ -12,6 +17,18 @@ const hasErrors = (errorInfo) => {
   return false;
 };
 
+/**
+ * validates the passed patient, then parses patient to be passed to specified API call
+ * @param {*} patient - patient to be validated
+ * @param {*} patientId - patient ID
+ * @param {*} setPatientSuccess - state function to be passed to API call
+ * @param {*} setPatientFailure - state function to be passed to API call
+ * @param {*} patientErrors - errors array to be passed to validation method
+ * @param {*} setPatientErrors - state function to set patient errors to trigger error divs if
+ * patient fails validation
+ * @param {*} setApiError state function to be passed to API call
+ * @param {*} patientApiCall - specific API call to be made if patient passes validation
+ */
 const handlePatientApiCall = (patient,
   patientId,
   setPatientSuccess,

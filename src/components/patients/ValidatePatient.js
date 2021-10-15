@@ -1,5 +1,12 @@
 import validate from '../../utils/validate';
 
+/**
+ * validates patient based on specific parameters
+ * @param {*} patient - patient to be validated
+ * @param {*} patientErrors - errors to base stateless errors
+ * @param {*} setPatientErrors - state function to set errors
+ * @returns - array of stateless errors
+ */
 const validatePatient = (patient, patientErrors, setPatientErrors) => {
   const statelessPatientErrors = {
     ...patientErrors,
