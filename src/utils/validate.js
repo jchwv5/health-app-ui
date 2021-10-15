@@ -12,12 +12,12 @@ const numRegex = /^\d+$/;
 const postalRegex = /^[0-9]{5}(?:-[0-9]{4})?$/;
 const dateRegex = /\d{4}-\d{2}-\d{2}/;
 const emailRegex = /\S+@\S+\.\S+/;
-const ssnRegex = /^(?!666|000|9\d{2})\d{3}-(?!00)\d{2}-(?!0{4})\d{4}$/;
+const ssnRegex = /^\d{3}-\d{2}-\d{4}$/;
 const stateRegex = /^(([Aa][EeLlKkSsZzRr])|([Cc][AaOoTt])|([Dd][EeCc])|([Ff][MmLl])|([Gg][AaUu])|([Hh][Ii])|([Ii][DdLlNnAa])|([Kk][SsYy])|([Ll][Aa])|([Mm][EeHhDdAaIiNnSsOoTt])|([Nn][EeVvHhJjMmYyCcDd])|([Mm][Pp])|([Oo][HhKkRr])|([Pp][WwAaRr])|([Rr][Ii])|([Ss][CcDd])|([Tt][NnXx])|([Uu][Tt])|([Vv][TtIiAa])|([Ww][AaVvIiYy]))$/;
 const visitCodeRegex = /^[A-Z]\d[A-Z]\s\d[A-Z]\d$/;
 const billingCodeRegex = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/;
 const icd10Regex = /^[A-Z]\d{2}$/;
-const currencyRegex = /(0|[1-9][0-9]{0,2})(,\d{3})*(\.\d{1,2})?$/;
+const currencyRegex = /^[1-9][0-9]*\.\d{2}?$/;
 
 const validate = (type, name, data) => {
   let isDataValid = true;
@@ -72,7 +72,7 @@ const validate = (type, name, data) => {
       if (!data || data.trim() === '') {
         isDataValid = false;
         errorMsg = `${name} field must not be left empty`;
-      } else if (!(currencyRegex.test(data))) {
+      } else if (!(currencyRegex.test(data)) && data !== '0' && data !== '0.00') {
         isDataValid = false;
         errorMsg = `${name} should be in dollars and cents`;
       }
@@ -91,9 +91,9 @@ const validate = (type, name, data) => {
         isDataValid = false;
         errorMsg = `${name} field must not be left empty`;
       // eslint-disable-next-line quotes
-      } else if (data !== "male" && data !== "female" && data !== "other" && data !== "Male" && data !== "Female" && data !== "Other") {
+      } else if (data !== "Male" && data !== "Female" && data !== "Other") {
         isDataValid = false;
-        errorMsg = `${name} field should be male, female, or other`;
+        errorMsg = `${name} field should be Male, Female, or Other`;
       }
       break;
     case 'visitCode':

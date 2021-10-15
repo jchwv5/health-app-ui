@@ -261,12 +261,12 @@ const PatientDetails = () => {
               <p>
                 Total Cost:
                 {' '}
-                {encounterDetails.totalCost}
+                {encounterDetails.totalCost.toFixed(2)}
               </p>
               <p>
                 Copay:
                 {' '}
-                {encounterDetails.copay}
+                {encounterDetails.copay.toFixed(2)}
               </p>
             </div>
             <div className="column">
